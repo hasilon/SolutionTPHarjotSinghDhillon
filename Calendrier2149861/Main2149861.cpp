@@ -38,17 +38,15 @@ int main()
               mois = demanderMois(mois); // Executer la fonction "demanderMois" et stocker son resultat dans mois
           }
 
-          afficherInfoMois(mois, annee);
+          switch (choix)
+          {
+          case '1': // Si la valeur de choix est 1, faire le suivant
+              afficherInfoMois(annee, mois); // Executer cette fonction
+              break;
+          }
 
+         
       }
-
-
-
-    
-
-
-   
-
     system("pause");
     return 0;
 }

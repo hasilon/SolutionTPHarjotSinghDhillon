@@ -1,5 +1,6 @@
 #include "Fonctions2149861.h"
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ void afficherMenu() // Cette fonction est void parce qu'elle ne retourne rien
     cout << " 5. Quitter le programme" << endl << endl;
 
     cout << "-------------------------------------------------------------------------------" << endl;
-    cout << " Votre choix --> ";
+    cout << "Votre choix --> ";
 
 }
 
@@ -34,8 +35,53 @@ char validerChoixMenu(char min, char max) // La fonction qui verifie le choix du
         cout << "Erreur, entrez un chiffre entre " << min << " et " << max << ": "; // Lui output ce message
         cin >> choice; // Le user rentre son choix
     }
+
+    system("cls");
     
     return choice; // La fonction retourne choice
+}
+
+void affiMois(int month)
+{
+    switch (month)
+    {
+    case 1:
+        cout << "Janvier";
+        break;
+    case 2:
+        cout << "Février";
+        break;
+    case 3:
+        cout << "Mars";
+        break;
+    case 4:
+        cout << "Avril";
+        break;
+    case 5:
+        cout << "Mai";
+        break;
+    case 6:
+        cout << "Juin";
+        break;
+    case 7:
+        cout << "Juillet";
+        break;
+    case 8:
+        cout << "Août";
+        break;
+    case 9:
+        cout << "Septembre";
+        break;
+    case 10:
+        cout << "Octobre";
+        break;
+    case 11:
+        cout << "Novembre";
+        break;
+    case 12:
+        cout << "Décembre";
+        break;
+    }
 }
 
 int demanderAnnee(int year) // Fonction qui verfie l'annee entrer
@@ -45,7 +91,7 @@ int demanderAnnee(int year) // Fonction qui verfie l'annee entrer
     
     const int MIN_YEAR = 1582; // L'annee minimum que le user peut entrer
 
-    cout << "Entrez une annee: "; // Demande au user d'entrer une annee
+    cout << "Veuillez indiquer l'année : "; // Demande au user d'entrer une annee
     cin >> year; // Le user entre une annee
    
     while (year < MIN_YEAR) // Si l'annee entrer est moins que "MIN_YEAR(1582)", faire le suivant
@@ -53,6 +99,8 @@ int demanderAnnee(int year) // Fonction qui verfie l'annee entrer
         cout << "Erreur, entrez une annee superieure ou egale a " << MIN_YEAR << ": "; // Output un message d'erreur
         cin >> year; // Le user reentre une annee
     }
+
+    system("cls");
 
     return year; // La fonction retourne year
 }
@@ -62,7 +110,7 @@ int demanderMois(int month)
     const int MIN_MONTH = 1; // Le mois minimum que le user peut entrer
     const int MAX_MONTH = 12; // Le mois maximum que le user peut entrer
 
-    cout << "Entrez un mois: "; // Demande au user d'entrer un mois
+    cout << "Veuillez indiquer le numéro du mois : "; // Demande au user d'entrer un mois
     cin >> month; // Le user entre un mois
 
     while (month < MIN_MONTH || month > MAX_MONTH) // Si le mois entrer n'est pas entre min_month et max_month, faire le suivant
@@ -71,17 +119,19 @@ int demanderMois(int month)
         cin >> month; // Le user reentre un mois
     }
 
+    system("cls");
+
     return month; // La fonction retourne month
 
 }
 
-void afficherInfoMois(int month, int year)
+void afficherInfoMois(int year, int month)
 {
-    cout << "------------------------ " << month << " " << year << " ------------------------" << endl << endl;
+    cout << "------------------------ "; affiMois(month); cout << " " << year << " ------------------------" << endl << endl;
     
     const int DAY = 1; // On veut toujours savoir le jour du premier, fais que c'est une constante
     
-    //--------------------------------------------------------------------------------------
+    // Montrer le premier jour du mois--------------------------------------------------------------------------------------
     /* Je ne suis pas sure comment ce code fonctionne, mais cela me permet de savoir le jour(lundi) avec le mois,
        l'annee, et le jour */
     
@@ -124,8 +174,35 @@ void afficherInfoMois(int month, int year)
         break;
     }
 
+    // Montrer le nombre de jours dans chaque mois
+    
+    // Fevrier
+    if (month == 2) // Si le user choisi 2 dans le mois (Fevrier), faire le suivant
+    {
+        if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) // Si c'est une annee bissextile, output le message suivant
+        {
+            cout << "Ce mois a 29 jours." << endl << endl;
+        }
+        else // Si ce n'est pas une annee bissextile, output le message suivant
+            cout << "Ce mois a 28 jours." << endl << endl;
+    }
+    
+    // Tous les mois a 31 jours
+    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) /* Si le user choisi une de ces options,
+                                                                                                             output le message suivant */
+    {
+        cout << "Ce mois a 31 jours." << endl << endl;
+    }
+    
+    // Tous les mois a 30 jours
+    else if (month == 4 || month == 6 || month == 9 || month == 11) // Si le user choisi une de ces options, output ce message
+    {
+        cout << "Ce mois a 30 jours." << endl << endl;
+    }
 
-
+    cout << "--------------------------------------------------------------" << endl;
 }
+
+
 
 
