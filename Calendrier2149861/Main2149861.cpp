@@ -29,7 +29,7 @@ int main()
 
       while (choix != '5')
       {
-          // Fonction qui demande et valide l'annee entrer par le user
+        // Fonction qui demande et valide l'annee entrer par le user
           annee = demanderAnnee(annee);
 
           // Si le choix est different que 4, faire le suivant 
@@ -43,10 +43,21 @@ int main()
           case '1': // Si la valeur de choix est 1, faire le suivant
               afficherInfoMois(annee, mois); // Executer cette fonction
               break;
-          }
+          
+          case '2':
+              afficherCalendrierMensuel(mois,annee);
+              break;
 
+          }
+          system("pause");
+
+          system("cls");
+
+          // Fonction qui affiche le menu de choix
+          afficherMenu();
+          // Fonction qui sauvegarde et valide le choix du user
+          choix = validerChoixMenu('1', '5');
          
       }
-    system("pause");
     return 0;
 }

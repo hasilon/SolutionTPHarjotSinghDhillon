@@ -10,6 +10,7 @@ int demanderAnnee(int year);
 int demanderMois(int month);
 
 void afficherInfoMois(int month, int year);
+void afficherCalendrierMensuel(int month, int year);
 
 
 

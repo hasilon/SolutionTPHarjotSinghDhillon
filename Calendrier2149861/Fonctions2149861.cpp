@@ -1,6 +1,7 @@
 #include "Fonctions2149861.h"
 #include <iostream>
 #include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -90,10 +91,13 @@ int demanderAnnee(int year) // Fonction qui verfie l'annee entrer
        superieure a 1582, pas je devais verifier si c'etait un nombre,lettre,etc. */
     
     const int MIN_YEAR = 1582; // L'annee minimum que le user peut entrer
+    string entrerAnnee;
+    
 
     cout << "Veuillez indiquer l'année : "; // Demande au user d'entrer une annee
     cin >> year; // Le user entre une annee
-   
+    
+    
     while (year < MIN_YEAR) // Si l'annee entrer est moins que "MIN_YEAR(1582)", faire le suivant
     {
         cout << "Erreur, entrez une annee superieure ou egale a " << MIN_YEAR << ": "; // Output un message d'erreur
@@ -202,6 +206,1269 @@ void afficherInfoMois(int year, int month)
 
     cout << "--------------------------------------------------------------" << endl;
 }
+
+void afficherCalendrierMensuel(int month, int year)
+{
+    cout << "--------- "; affiMois(month); cout << " " << year << " ----------" << endl;
+
+    
+    
+    const int MOIS_JOURSMAX = 32;
+    int PremierJourMois;
+
+    int a;
+    int y;
+    int m;
+
+    int compterJ = 1;
+
+    int final;
+
+      
+    a = (14 - month) / 12;
+    y = year - a;
+    m = month + (12 * a) - 2;
+
+    PremierJourMois = (1 + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7;
+    
+    // ==========================================================================================================
+
+    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+    {
+
+        switch (PremierJourMois)
+        {
+       
+        case 0: 
+            
+            cout << " dim lun mar mer jeu ven sam" << endl;
+            
+
+            for (int i = 1; compterJ < 32; i++)
+            {
+                cout <<setw(3) << right;
+
+                for (int j = 0; j < 7 ; j++)
+                {
+                    cout << setw(4) << right;
+                    
+                    if (compterJ == 32)
+                        break;
+                    
+                    if (compterJ <= 9) 
+                        cout << compterJ;
+                       
+
+                    else if (compterJ >= 10)
+                        cout << compterJ;
+                        
+                    compterJ++; 
+                    
+                }
+               
+                cout << endl; 
+                
+            }
+
+            
+            /* cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(3) << right << "1";
+            cout << setw(4) << right << "2";
+            cout << setw(4) << right << "3";
+            cout << setw(4) << right << "4";
+            cout << setw(4) << right << "5";
+            cout << setw(4) << right << "6";
+            cout << setw(4) << right << "7" << endl;
+
+            cout << setw(3) << right << "8";
+            cout << setw(4) << right << "9";
+            cout << setw(4) << right << "10";
+            cout << setw(4) << right << "11";
+            cout << setw(4) << right << "12";
+            cout << setw(4) << right << "13";
+            cout << setw(4) << right << "14" << endl;
+
+            cout << setw(3) << right << "15";
+            cout << setw(4) << right << "16";
+            cout << setw(4) << right << "17";
+            cout << setw(4) << right << "18";
+            cout << setw(4) << right << "19";
+            cout << setw(4) << right << "20";
+            cout << setw(4) << right << "21" << endl;
+
+            cout << setw(3) << right << "22";
+            cout << setw(4) << right << "23";
+            cout << setw(4) << right << "24";
+            cout << setw(4) << right << "25";
+            cout << setw(4) << right << "26";
+            cout << setw(4) << right << "27";
+            cout << setw(4) << right << "28" << endl;
+
+            cout << setw(3) << right << "29";
+            cout << setw(4) << right << "30";
+            cout << setw(4) << right << "31" << endl; */
+
+            break;
+        
+        case 1:
+
+            cout << " dim lun mar mer jeu ven sam" << endl;
+
+            //cout << setw(7) << right;
+
+
+            for (int i = 1; compterJ < 32; i++)
+            {
+               
+                cout << setw(3) << right;
+
+                for (int j = 0; j < 7; j++)
+                {
+                    if (compterJ == 1)
+                        cout << setw(8) << right;
+                    else
+                    cout << setw(4) << right;
+
+                    //if (compterJ == 7)
+                        //cout << endl;
+
+                    if (compterJ == 32)
+                        break;
+
+                    if (compterJ <= 9)
+                    { 
+                        cout << compterJ;
+                        if (compterJ == 6)
+                        cout << endl;
+                    }
+                        
+
+
+                    else if (compterJ >= 10)
+                        cout << compterJ;
+
+                    compterJ++;
+
+                }
+
+                if (compterJ == 8)
+                    cout << "";
+                else
+                cout << endl;
+                //cout << setw(3) << right;
+
+
+            }
+           /* cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(7) << right << "1";
+            cout << setw(4) << right << "2";
+            cout << setw(4) << right << "3";
+            cout << setw(4) << right << "4";
+            cout << setw(4) << right << "5";
+            cout << setw(4) << right << "6" << endl;
+
+            cout << setw(4) << right << "7";
+            cout << setw(3) << right << "8";
+            cout << setw(4) << right << "9";
+            cout << setw(4) << right << "10";
+            cout << setw(4) << right << "11";
+            cout << setw(4) << right << "12";
+            cout << setw(4) << right << "13" << endl;
+
+            cout << setw(4) << right << "14";
+            cout << setw(3) << right << "15";
+            cout << setw(4) << right << "16";
+            cout << setw(4) << right << "17";
+            cout << setw(4) << right << "18";
+            cout << setw(4) << right << "19";
+            cout << setw(4) << right << "20" << endl;
+
+            cout << setw(4) << right << "21";
+            cout << setw(3) << right << "22";
+            cout << setw(4) << right << "23";
+            cout << setw(4) << right << "24";
+            cout << setw(4) << right << "25";
+            cout << setw(4) << right << "26";
+            cout << setw(4) << right << "27" << endl;
+
+            cout << setw(4) << right << "28";
+            cout << setw(3) << right << "29";
+            cout << setw(4) << right << "30";
+            cout << setw(4) << right << "31" << endl;
+            */
+            break;
+
+        case 2:
+            cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(11) << right << "1";
+            cout << setw(4) << right << "2";
+            cout << setw(4) << right << "3";
+            cout << setw(4) << right << "4";
+            cout << setw(4) << right << "5" << endl;
+            
+            cout << setw(3) << right << "6";
+            cout << setw(4) << right << "7";
+            cout << setw(4) << right << "8";
+            cout << setw(4) << right << "9";
+            cout << setw(4) << right << "10";
+            cout << setw(4) << right << "11";
+            cout << setw(4) << right << "12" << endl;
+            
+            cout << setw(3) << right << "13";
+            cout << setw(4) << right << "14";
+            cout << setw(4) << right << "15";
+            cout << setw(4) << right << "16";
+            cout << setw(4) << right << "17";
+            cout << setw(4) << right << "18";
+            cout << setw(4) << right << "19" << endl;
+            
+            cout << setw(3) << right << "20";
+            cout << setw(4) << right << "21";
+            cout << setw(4) << right << "22";
+            cout << setw(4) << right << "23";
+            cout << setw(4) << right << "24";
+            cout << setw(4) << right << "25";
+            cout << setw(4) << right << "26" << endl;
+            
+            cout << setw(3) << right << "27";
+            cout << setw(4) << right << "28";
+            cout << setw(4) << right << "29";
+            cout << setw(4) << right << "30";
+            cout << setw(4) << right << "31" << endl;
+
+            break;
+
+        case 3:
+            cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(15) << right << "1";
+            cout << setw(4) << right << "2";
+            cout << setw(4) << right << "3";
+            cout << setw(4) << right << "4" << endl;
+            
+            cout << setw(3) << right << "5";
+            cout << setw(4) << right << "6";
+            cout << setw(4) << right << "7";
+            cout << setw(4) << right << "8";
+            cout << setw(4) << right << "9";
+            cout << setw(4) << right << "10";
+            cout << setw(4) << right << "11" << endl;
+            
+            cout << setw(3) << right << "12";
+            cout << setw(4) << right << "13";
+            cout << setw(4) << right << "14";
+            cout << setw(4) << right << "15";
+            cout << setw(4) << right << "16";
+            cout << setw(4) << right << "17";
+            cout << setw(4) << right << "18" << endl;
+           
+            cout << setw(3) << right << "19";
+            cout << setw(4) << right << "20";
+            cout << setw(4) << right << "21";
+            cout << setw(4) << right << "22";
+            cout << setw(4) << right << "23";
+            cout << setw(4) << right << "24";
+            cout << setw(4) << right << "25" << endl;
+           
+            cout << setw(3) << right << "26";
+            cout << setw(4) << right << "27";
+            cout << setw(4) << right << "28";
+            cout << setw(4) << right << "29";
+            cout << setw(4) << right << "30";
+            cout << setw(4) << right << "31" << endl;
+
+            break;
+
+        case 4:
+            cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(19) << right << "1";
+            cout << setw(4) << right << "2";
+            cout << setw(4) << right << "3" << endl;
+
+            cout << setw(3) << right << "4";
+            cout << setw(4) << right << "5";
+            cout << setw(4) << right << "6";
+            cout << setw(4) << right << "7";
+            cout << setw(4) << right << "8";
+            cout << setw(4) << right << "9";
+            cout << setw(4) << right << "10" << endl;
+
+            cout << setw(3) << right << "11";
+            cout << setw(4) << right << "12";
+            cout << setw(4) << right << "13";
+            cout << setw(4) << right << "14";
+            cout << setw(4) << right << "15";
+            cout << setw(4) << right << "16";
+            cout << setw(4) << right << "17" << endl;
+
+            cout << setw(3) << right << "18";
+            cout << setw(4) << right << "19";
+            cout << setw(4) << right << "20";
+            cout << setw(4) << right << "21";
+            cout << setw(4) << right << "22";
+            cout << setw(4) << right << "23";
+            cout << setw(4) << right << "24" << endl;
+
+            cout << setw(3) << right << "25";
+            cout << setw(4) << right << "26";
+            cout << setw(4) << right << "27";
+            cout << setw(4) << right << "28";
+            cout << setw(4) << right << "29";
+            cout << setw(4) << right << "30";
+            cout << setw(4) << right << "31" << endl;
+
+            break;
+
+        case 5:
+            cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(23) << right << "1";
+            cout << setw(4) << right << "2" << endl;
+            
+            cout << setw(3) << right << "3";
+            cout << setw(4) << right << "4";
+            cout << setw(4) << right << "5";
+            cout << setw(4) << right << "6";
+            cout << setw(4) << right << "7";
+            cout << setw(4) << right << "8";
+            cout << setw(4) << right << "9" << endl;
+            
+            cout << setw(3) << right << "10";
+            cout << setw(4) << right << "11";
+            cout << setw(4) << right << "12";
+            cout << setw(4) << right << "13";
+            cout << setw(4) << right << "14";
+            cout << setw(4) << right << "15";
+            cout << setw(4) << right << "16" << endl;
+            
+            cout << setw(3) << right << "17";
+            cout << setw(4) << right << "18";
+            cout << setw(4) << right << "19";
+            cout << setw(4) << right << "20";
+            cout << setw(4) << right << "21";
+            cout << setw(4) << right << "22";
+            cout << setw(4) << right << "23" << endl;
+            
+            cout << setw(3) << right << "24";
+            cout << setw(4) << right << "25";
+            cout << setw(4) << right << "26";
+            cout << setw(4) << right << "27";
+            cout << setw(4) << right << "28";
+            cout << setw(4) << right << "29";
+            cout << setw(4) << right << "30" << endl;
+           
+            cout << setw(3) << right << "31" << endl;
+
+            break;
+            
+        case 6:
+            cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(27) << right << "1" << endl;
+           
+            cout << setw(3) << right << "2";
+            cout << setw(4) << right << "3";
+            cout << setw(4) << right << "4";
+            cout << setw(4) << right << "5";
+            cout << setw(4) << right << "6";
+            cout << setw(4) << right << "7";
+            cout << setw(4) << right << "8" << endl;
+
+            cout << setw(3) << right << "9";
+            cout << setw(4) << right << "10";
+            cout << setw(4) << right << "11";
+            cout << setw(4) << right << "12";
+            cout << setw(4) << right << "13";
+            cout << setw(4) << right << "14";
+            cout << setw(4) << right << "15" << endl;
+            
+            cout << setw(3) << right << "16";
+            cout << setw(4) << right << "17";
+            cout << setw(4) << right << "18";
+            cout << setw(4) << right << "19";
+            cout << setw(4) << right << "20";
+            cout << setw(4) << right << "21";
+            cout << setw(4) << right << "22" << endl;
+
+            cout << setw(3) << right << "23";
+            cout << setw(4) << right << "24";
+            cout << setw(4) << right << "25";
+            cout << setw(4) << right << "26";
+            cout << setw(4) << right << "27";
+            cout << setw(4) << right << "28";
+            cout << setw(4) << right << "29" << endl;
+
+            cout << setw(3) << right << "30";
+            cout << setw(4) << right << "31" << endl;
+
+            break;
+
+        }
+
+        cout << "----------------------------" << endl;
+    }
+
+    else if (month == 4 || month == 6 || month == 9 || month == 11)
+    {
+    
+    switch (PremierJourMois)
+    {
+
+    case 0:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(3) << right << "1";
+        cout << setw(4) << right << "2";
+        cout << setw(4) << right << "3";
+        cout << setw(4) << right << "4";
+        cout << setw(4) << right << "5";
+        cout << setw(4) << right << "6";
+        cout << setw(4) << right << "7" << endl;
+
+        cout << setw(3) << right << "8";
+        cout << setw(4) << right << "9";
+        cout << setw(4) << right << "10";
+        cout << setw(4) << right << "11";
+        cout << setw(4) << right << "12";
+        cout << setw(4) << right << "13";
+        cout << setw(4) << right << "14" << endl;
+
+        cout << setw(3) << right << "15";
+        cout << setw(4) << right << "16";
+        cout << setw(4) << right << "17";
+        cout << setw(4) << right << "18";
+        cout << setw(4) << right << "19";
+        cout << setw(4) << right << "20";
+        cout << setw(4) << right << "21" << endl;
+
+        cout << setw(3) << right << "22";
+        cout << setw(4) << right << "23";
+        cout << setw(4) << right << "24";
+        cout << setw(4) << right << "25";
+        cout << setw(4) << right << "26";
+        cout << setw(4) << right << "27";
+        cout << setw(4) << right << "28" << endl;
+
+        cout << setw(3) << right << "29";
+        cout << setw(4) << right << "30" << endl;
+       
+
+        break;
+
+    case 1:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(7) << right << "1";
+        cout << setw(4) << right << "2";
+        cout << setw(4) << right << "3";
+        cout << setw(4) << right << "4";
+        cout << setw(4) << right << "5";
+        cout << setw(4) << right << "6" << endl;
+
+        cout << setw(3) << right << "7";
+        cout << setw(4) << right << "8";
+        cout << setw(4) << right << "9";
+        cout << setw(4) << right << "10";
+        cout << setw(4) << right << "11";
+        cout << setw(4) << right << "12";
+        cout << setw(4) << right << "13" << endl;
+
+        cout << setw(3) << right << "14";
+        cout << setw(4) << right << "15";
+        cout << setw(4) << right << "16";
+        cout << setw(4) << right << "17";
+        cout << setw(4) << right << "18";
+        cout << setw(4) << right << "19";
+        cout << setw(4) << right << "20" << endl;
+
+        cout << setw(3) << right << "21";
+        cout << setw(4) << right << "22";
+        cout << setw(4) << right << "23";
+        cout << setw(4) << right << "24";
+        cout << setw(4) << right << "25";
+        cout << setw(4) << right << "26";
+        cout << setw(4) << right << "27" << endl;
+
+        cout << setw(3) << right << "28";
+        cout << setw(4) << right << "29";
+        cout << setw(4) << right << "30" << endl;
+       
+
+        break;
+
+    case 2:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(11) << right << "1";
+        cout << setw(4) << right << "2";
+        cout << setw(4) << right << "3";
+        cout << setw(4) << right << "4";
+        cout << setw(4) << right << "5" << endl;
+
+        cout << setw(3) << right << "6";
+        cout << setw(4) << right << "7";
+        cout << setw(4) << right << "8";
+        cout << setw(4) << right << "9";
+        cout << setw(4) << right << "10";
+        cout << setw(4) << right << "11";
+        cout << setw(4) << right << "12" << endl;
+
+        cout << setw(3) << right << "13";
+        cout << setw(4) << right << "14";
+        cout << setw(4) << right << "15";
+        cout << setw(4) << right << "16";
+        cout << setw(4) << right << "17";
+        cout << setw(4) << right << "18";
+        cout << setw(4) << right << "19" << endl;
+
+        cout << setw(3) << right << "20";
+        cout << setw(4) << right << "21";
+        cout << setw(4) << right << "22";
+        cout << setw(4) << right << "23";
+        cout << setw(4) << right << "24";
+        cout << setw(4) << right << "25";
+        cout << setw(4) << right << "26" << endl;
+
+        cout << setw(3) << right << "27";
+        cout << setw(4) << right << "28";
+        cout << setw(4) << right << "29";
+        cout << setw(4) << right << "30" << endl;
+     
+
+        break;
+
+    case 3:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(15) << right << "1";
+        cout << setw(4) << right << "2";
+        cout << setw(4) << right << "3";
+        cout << setw(4) << right << "4" << endl;
+
+        cout << setw(3) << right << "5";
+        cout << setw(4) << right << "6";
+        cout << setw(4) << right << "7";
+        cout << setw(4) << right << "8";
+        cout << setw(4) << right << "9";
+        cout << setw(4) << right << "10";
+        cout << setw(4) << right << "11" << endl;
+
+        cout << setw(3) << right << "12";
+        cout << setw(4) << right << "13";
+        cout << setw(4) << right << "14";
+        cout << setw(4) << right << "15";
+        cout << setw(4) << right << "16";
+        cout << setw(4) << right << "17";
+        cout << setw(4) << right << "18" << endl;
+
+        cout << setw(3) << right << "19";
+        cout << setw(4) << right << "20";
+        cout << setw(4) << right << "21";
+        cout << setw(4) << right << "22";
+        cout << setw(4) << right << "23";
+        cout << setw(4) << right << "24";
+        cout << setw(4) << right << "25" << endl;
+
+        cout << setw(3) << right << "26";
+        cout << setw(4) << right << "27";
+        cout << setw(4) << right << "28";
+        cout << setw(4) << right << "29";
+        cout << setw(4) << right << "30" << endl;
+
+        break;
+
+    case 4:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(19) << right << "1";
+        cout << setw(4) << right << "2";
+        cout << setw(4) << right << "3" << endl;
+
+        cout << setw(3) << right << "4";
+        cout << setw(4) << right << "5";
+        cout << setw(4) << right << "6";
+        cout << setw(4) << right << "7";
+        cout << setw(4) << right << "8";
+        cout << setw(4) << right << "9";
+        cout << setw(4) << right << "10" << endl;
+
+        cout << setw(3) << right << "11";
+        cout << setw(4) << right << "12";
+        cout << setw(4) << right << "13";
+        cout << setw(4) << right << "14";
+        cout << setw(4) << right << "15";
+        cout << setw(4) << right << "16";
+        cout << setw(4) << right << "17" << endl;
+
+        cout << setw(3) << right << "18";
+        cout << setw(4) << right << "19";
+        cout << setw(4) << right << "20";
+        cout << setw(4) << right << "21";
+        cout << setw(4) << right << "22";
+        cout << setw(4) << right << "23";
+        cout << setw(4) << right << "24" << endl;
+
+        cout << setw(3) << right << "25";
+        cout << setw(4) << right << "26";
+        cout << setw(4) << right << "27";
+        cout << setw(4) << right << "28";
+        cout << setw(4) << right << "29";
+        cout << setw(4) << right << "30" << endl;
+
+        break;
+
+    case 5:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(23) << right << "1";
+        cout << setw(4) << right << "2" << endl;
+
+        cout << setw(3) << right << "3";
+        cout << setw(4) << right << "4";
+        cout << setw(4) << right << "5";
+        cout << setw(4) << right << "6";
+        cout << setw(4) << right << "7";
+        cout << setw(4) << right << "8";
+        cout << setw(4) << right << "9" << endl;
+
+        cout << setw(3) << right << "10";
+        cout << setw(4) << right << "11";
+        cout << setw(4) << right << "12";
+        cout << setw(4) << right << "13";
+        cout << setw(4) << right << "14";
+        cout << setw(4) << right << "15";
+        cout << setw(4) << right << "16" << endl;
+
+        cout << setw(3) << right << "17";
+        cout << setw(4) << right << "18";
+        cout << setw(4) << right << "19";
+        cout << setw(4) << right << "20";
+        cout << setw(4) << right << "21";
+        cout << setw(4) << right << "22";
+        cout << setw(4) << right << "23" << endl;
+
+        cout << setw(3) << right << "24";
+        cout << setw(4) << right << "25";
+        cout << setw(4) << right << "26";
+        cout << setw(4) << right << "27";
+        cout << setw(4) << right << "28";
+        cout << setw(4) << right << "29";
+        cout << setw(4) << right << "30" << endl;
+
+
+        break;
+
+    case 6:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(27) << right << "1" << endl;
+
+        cout << setw(3) << right << "2";
+        cout << setw(4) << right << "3";
+        cout << setw(4) << right << "4";
+        cout << setw(4) << right << "5";
+        cout << setw(4) << right << "6";
+        cout << setw(4) << right << "7";
+        cout << setw(4) << right << "8" << endl;
+
+        cout << setw(3) << right << "9";
+        cout << setw(4) << right << "10";
+        cout << setw(4) << right << "11";
+        cout << setw(4) << right << "12";
+        cout << setw(4) << right << "13";
+        cout << setw(4) << right << "14";
+        cout << setw(4) << right << "15" << endl;
+
+        cout << setw(3) << right << "16";
+        cout << setw(4) << right << "17";
+        cout << setw(4) << right << "18";
+        cout << setw(4) << right << "19";
+        cout << setw(4) << right << "20";
+        cout << setw(4) << right << "21";
+        cout << setw(4) << right << "22" << endl;
+
+        cout << setw(3) << right << "23";
+        cout << setw(4) << right << "24";
+        cout << setw(4) << right << "25";
+        cout << setw(4) << right << "26";
+        cout << setw(4) << right << "27";
+        cout << setw(4) << right << "28";
+        cout << setw(4) << right << "29" << endl;
+
+        cout << setw(3) << right << "30" << endl;
+
+        break;
+
+    }
+
+    cout << "----------------------------" << endl;
+
+    }
+    
+    else if (month == 2) // Si le user choisi 2 dans le mois (Fevrier), faire le suivant
+    {
+    
+    if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0))
+    {
+        switch (PremierJourMois)
+        {
+
+        case 0:
+            cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(3) << right << "1";
+            cout << setw(4) << right << "2";
+            cout << setw(4) << right << "3";
+            cout << setw(4) << right << "4";
+            cout << setw(4) << right << "5";
+            cout << setw(4) << right << "6";
+            cout << setw(4) << right << "7" << endl;
+
+            cout << setw(3) << right << "8";
+            cout << setw(4) << right << "9";
+            cout << setw(4) << right << "10";
+            cout << setw(4) << right << "11";
+            cout << setw(4) << right << "12";
+            cout << setw(4) << right << "13";
+            cout << setw(4) << right << "14" << endl;
+
+            cout << setw(3) << right << "15";
+            cout << setw(4) << right << "16";
+            cout << setw(4) << right << "17";
+            cout << setw(4) << right << "18";
+            cout << setw(4) << right << "19";
+            cout << setw(4) << right << "20";
+            cout << setw(4) << right << "21" << endl;
+
+            cout << setw(3) << right << "22";
+            cout << setw(4) << right << "23";
+            cout << setw(4) << right << "24";
+            cout << setw(4) << right << "25";
+            cout << setw(4) << right << "26";
+            cout << setw(4) << right << "27";
+            cout << setw(4) << right << "28" << endl;
+
+            cout << setw(3) << right << "29" << endl;
+
+            break;
+
+        case 1:
+            cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(7) << right << "1";
+            cout << setw(4) << right << "2";
+            cout << setw(4) << right << "3";
+            cout << setw(4) << right << "4";
+            cout << setw(4) << right << "5";
+            cout << setw(4) << right << "6" << endl;
+
+            cout << setw(3) << right << "7";
+            cout << setw(4) << right << "8";
+            cout << setw(4) << right << "9";
+            cout << setw(4) << right << "10";
+            cout << setw(4) << right << "11";
+            cout << setw(4) << right << "12";
+            cout << setw(4) << right << "13" << endl;
+
+            cout << setw(3) << right << "14";
+            cout << setw(4) << right << "15";
+            cout << setw(4) << right << "16";
+            cout << setw(4) << right << "17";
+            cout << setw(4) << right << "18";
+            cout << setw(4) << right << "19";
+            cout << setw(4) << right << "20" << endl;
+
+            cout << setw(3) << right << "21";
+            cout << setw(4) << right << "22";
+            cout << setw(4) << right << "23";
+            cout << setw(4) << right << "24";
+            cout << setw(4) << right << "25";
+            cout << setw(4) << right << "26";
+            cout << setw(4) << right << "27" << endl;
+
+            cout << setw(4) << right << "28";
+            cout << setw(3) << right << "29" << endl;
+            break;
+
+        case 2:
+            cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(11) << right << "1";
+            cout << setw(4) << right << "2";
+            cout << setw(4) << right << "3";
+            cout << setw(4) << right << "4";
+            cout << setw(4) << right << "5" << endl;
+
+            cout << setw(3) << right << "6";
+            cout << setw(4) << right << "7";
+            cout << setw(4) << right << "8";
+            cout << setw(4) << right << "9";
+            cout << setw(4) << right << "10";
+            cout << setw(4) << right << "11";
+            cout << setw(4) << right << "12" << endl;
+
+            cout << setw(3) << right << "13";
+            cout << setw(4) << right << "14";
+            cout << setw(4) << right << "15";
+            cout << setw(4) << right << "16";
+            cout << setw(4) << right << "17";
+            cout << setw(4) << right << "18";
+            cout << setw(4) << right << "19" << endl;
+
+            cout << setw(3) << right << "20";
+            cout << setw(4) << right << "21";
+            cout << setw(4) << right << "22";
+            cout << setw(4) << right << "23";
+            cout << setw(4) << right << "24";
+            cout << setw(4) << right << "25";
+            cout << setw(4) << right << "26" << endl;
+
+            cout << setw(3) << right << "27";
+            cout << setw(4) << right << "28";
+            cout << setw(4) << right << "29" << endl;
+
+            break;
+
+        case 3:
+            cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(15) << right << "1";
+            cout << setw(4) << right << "2";
+            cout << setw(4) << right << "3";
+            cout << setw(4) << right << "4" << endl;
+
+            cout << setw(3) << right << "5";
+            cout << setw(4) << right << "6";
+            cout << setw(4) << right << "7";
+            cout << setw(4) << right << "8";
+            cout << setw(4) << right << "9";
+            cout << setw(4) << right << "10";
+            cout << setw(4) << right << "11" << endl;
+
+            cout << setw(3) << right << "12";
+            cout << setw(4) << right << "13";
+            cout << setw(4) << right << "14";
+            cout << setw(4) << right << "15";
+            cout << setw(4) << right << "16";
+            cout << setw(4) << right << "17";
+            cout << setw(4) << right << "18" << endl;
+
+            cout << setw(3) << right << "19";
+            cout << setw(4) << right << "20";
+            cout << setw(4) << right << "21";
+            cout << setw(4) << right << "22";
+            cout << setw(4) << right << "23";
+            cout << setw(4) << right << "24";
+            cout << setw(4) << right << "25" << endl;
+
+            cout << setw(3) << right << "26";
+            cout << setw(4) << right << "27";
+            cout << setw(4) << right << "28";
+            cout << setw(4) << right << "29" << endl;
+
+            break;
+
+        case 4:
+            cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(19) << right << "1";
+            cout << setw(4) << right << "2";
+            cout << setw(4) << right << "3" << endl;
+
+            cout << setw(3) << right << "4";
+            cout << setw(4) << right << "5";
+            cout << setw(4) << right << "6";
+            cout << setw(4) << right << "7";
+            cout << setw(4) << right << "8";
+            cout << setw(4) << right << "9";
+            cout << setw(4) << right << "10" << endl;
+
+            cout << setw(3) << right << "11";
+            cout << setw(4) << right << "12";
+            cout << setw(4) << right << "13";
+            cout << setw(4) << right << "14";
+            cout << setw(4) << right << "15";
+            cout << setw(4) << right << "16";
+            cout << setw(4) << right << "17" << endl;
+
+            cout << setw(3) << right << "18";
+            cout << setw(4) << right << "19";
+            cout << setw(4) << right << "20";
+            cout << setw(4) << right << "21";
+            cout << setw(4) << right << "22";
+            cout << setw(4) << right << "23";
+            cout << setw(4) << right << "24" << endl;
+
+            cout << setw(3) << right << "25";
+            cout << setw(4) << right << "26";
+            cout << setw(4) << right << "27";
+            cout << setw(4) << right << "28";
+            cout << setw(4) << right << "29" << endl;
+
+            break;
+
+        case 5:
+            cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(23) << right << "1";
+            cout << setw(4) << right << "2" << endl;
+
+            cout << setw(3) << right << "3";
+            cout << setw(4) << right << "4";
+            cout << setw(4) << right << "5";
+            cout << setw(4) << right << "6";
+            cout << setw(4) << right << "7";
+            cout << setw(4) << right << "8";
+            cout << setw(4) << right << "9" << endl;
+
+            cout << setw(3) << right << "10";
+            cout << setw(4) << right << "11";
+            cout << setw(4) << right << "12";
+            cout << setw(4) << right << "13";
+            cout << setw(4) << right << "14";
+            cout << setw(4) << right << "15";
+            cout << setw(4) << right << "16" << endl;
+
+            cout << setw(3) << right << "17";
+            cout << setw(4) << right << "18";
+            cout << setw(4) << right << "19";
+            cout << setw(4) << right << "20";
+            cout << setw(4) << right << "21";
+            cout << setw(4) << right << "22";
+            cout << setw(4) << right << "23" << endl;
+
+            cout << setw(3) << right << "24";
+            cout << setw(4) << right << "25";
+            cout << setw(4) << right << "26";
+            cout << setw(4) << right << "27";
+            cout << setw(4) << right << "28";
+            cout << setw(4) << right << "29" << endl;
+
+            break;
+
+        case 6:
+            cout << "dim lun mar mer jeu ven sam" << endl;
+
+            cout << setw(27) << right << "1" << endl;
+
+            cout << setw(3) << right << "2";
+            cout << setw(4) << right << "3";
+            cout << setw(4) << right << "4";
+            cout << setw(4) << right << "5";
+            cout << setw(4) << right << "6";
+            cout << setw(4) << right << "7";
+            cout << setw(4) << right << "8" << endl;
+
+            cout << setw(3) << right << "9";
+            cout << setw(4) << right << "10";
+            cout << setw(4) << right << "11";
+            cout << setw(4) << right << "12";
+            cout << setw(4) << right << "13";
+            cout << setw(4) << right << "14";
+            cout << setw(4) << right << "15" << endl;
+
+            cout << setw(3) << right << "16";
+            cout << setw(4) << right << "17";
+            cout << setw(4) << right << "18";
+            cout << setw(4) << right << "19";
+            cout << setw(4) << right << "20";
+            cout << setw(4) << right << "21";
+            cout << setw(4) << right << "22" << endl;
+
+            cout << setw(3) << right << "23";
+            cout << setw(4) << right << "24";
+            cout << setw(4) << right << "25";
+            cout << setw(4) << right << "26";
+            cout << setw(4) << right << "27";
+            cout << setw(4) << right << "28";
+            cout << setw(4) << right << "29" << endl;
+
+            break;
+
+        }
+
+       
+    }
+
+    else
+    {
+
+    switch (PremierJourMois)
+    {
+
+    case 0:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(3) << right << "1";
+        cout << setw(4) << right << "2";
+        cout << setw(4) << right << "3";
+        cout << setw(4) << right << "4";
+        cout << setw(4) << right << "5";
+        cout << setw(4) << right << "6";
+        cout << setw(4) << right << "7" << endl;
+
+        cout << setw(3) << right << "8";
+        cout << setw(4) << right << "9";
+        cout << setw(4) << right << "10";
+        cout << setw(4) << right << "11";
+        cout << setw(4) << right << "12";
+        cout << setw(4) << right << "13";
+        cout << setw(4) << right << "14" << endl;
+
+        cout << setw(3) << right << "15";
+        cout << setw(4) << right << "16";
+        cout << setw(4) << right << "17";
+        cout << setw(4) << right << "18";
+        cout << setw(4) << right << "19";
+        cout << setw(4) << right << "20";
+        cout << setw(4) << right << "21" << endl;
+
+        cout << setw(3) << right << "22";
+        cout << setw(4) << right << "23";
+        cout << setw(4) << right << "24";
+        cout << setw(4) << right << "25";
+        cout << setw(4) << right << "26";
+        cout << setw(4) << right << "27";
+        cout << setw(4) << right << "28" << endl;
+
+        break;
+
+    case 1:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(7) << right << "1";
+        cout << setw(4) << right << "2";
+        cout << setw(4) << right << "3";
+        cout << setw(4) << right << "4";
+        cout << setw(4) << right << "5";
+        cout << setw(4) << right << "6" << endl;
+
+        cout << setw(3) << right << "7";
+        cout << setw(4) << right << "8";
+        cout << setw(4) << right << "9";
+        cout << setw(4) << right << "10";
+        cout << setw(4) << right << "11";
+        cout << setw(4) << right << "12";
+        cout << setw(4) << right << "13" << endl;
+
+        cout << setw(3) << right << "14";
+        cout << setw(4) << right << "15";
+        cout << setw(4) << right << "16";
+        cout << setw(4) << right << "17";
+        cout << setw(4) << right << "18";
+        cout << setw(4) << right << "19";
+        cout << setw(4) << right << "20" << endl;
+
+        cout << setw(3) << right << "21";
+        cout << setw(4) << right << "22";
+        cout << setw(4) << right << "23";
+        cout << setw(4) << right << "24";
+        cout << setw(4) << right << "25";
+        cout << setw(4) << right << "26";
+        cout << setw(4) << right << "27";
+
+        cout << setw(4) << right << "28" << endl;
+        break;
+
+    case 2:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(11) << right << "1";
+        cout << setw(4) << right << "2";
+        cout << setw(4) << right << "3";
+        cout << setw(4) << right << "4";
+        cout << setw(4) << right << "5" << endl;
+
+        cout << setw(3) << right << "6";
+        cout << setw(4) << right << "7";
+        cout << setw(4) << right << "8";
+        cout << setw(4) << right << "9";
+        cout << setw(4) << right << "10";
+        cout << setw(4) << right << "11";
+        cout << setw(4) << right << "12" << endl;
+
+        cout << setw(3) << right << "13";
+        cout << setw(4) << right << "14";
+        cout << setw(4) << right << "15";
+        cout << setw(4) << right << "16";
+        cout << setw(4) << right << "17";
+        cout << setw(4) << right << "18";
+        cout << setw(4) << right << "19" << endl;
+
+        cout << setw(3) << right << "20";
+        cout << setw(4) << right << "21";
+        cout << setw(4) << right << "22";
+        cout << setw(4) << right << "23";
+        cout << setw(4) << right << "24";
+        cout << setw(4) << right << "25";
+        cout << setw(4) << right << "26" << endl;
+
+        cout << setw(3) << right << "27";
+        cout << setw(4) << right << "28" << endl;
+        break;
+
+    case 3:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(15) << right << "1";
+        cout << setw(4) << right << "2";
+        cout << setw(4) << right << "3";
+        cout << setw(4) << right << "4" << endl;
+
+        cout << setw(3) << right << "5";
+        cout << setw(4) << right << "6";
+        cout << setw(4) << right << "7";
+        cout << setw(4) << right << "8";
+        cout << setw(4) << right << "9";
+        cout << setw(4) << right << "10";
+        cout << setw(4) << right << "11" << endl;
+
+        cout << setw(3) << right << "12";
+        cout << setw(4) << right << "13";
+        cout << setw(4) << right << "14";
+        cout << setw(4) << right << "15";
+        cout << setw(4) << right << "16";
+        cout << setw(4) << right << "17";
+        cout << setw(4) << right << "18" << endl;
+
+        cout << setw(3) << right << "19";
+        cout << setw(4) << right << "20";
+        cout << setw(4) << right << "21";
+        cout << setw(4) << right << "22";
+        cout << setw(4) << right << "23";
+        cout << setw(4) << right << "24";
+        cout << setw(4) << right << "25" << endl;
+
+        cout << setw(3) << right << "26";
+        cout << setw(4) << right << "27";
+        cout << setw(4) << right << "28" << endl;
+        break;
+
+    case 4:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(19) << right << "1";
+        cout << setw(4) << right << "2";
+        cout << setw(4) << right << "3" << endl;
+
+        cout << setw(3) << right << "4";
+        cout << setw(4) << right << "5";
+        cout << setw(4) << right << "6";
+        cout << setw(4) << right << "7";
+        cout << setw(4) << right << "8";
+        cout << setw(4) << right << "9";
+        cout << setw(4) << right << "10" << endl;
+
+        cout << setw(3) << right << "11";
+        cout << setw(4) << right << "12";
+        cout << setw(4) << right << "13";
+        cout << setw(4) << right << "14";
+        cout << setw(4) << right << "15";
+        cout << setw(4) << right << "16";
+        cout << setw(4) << right << "17" << endl;
+
+        cout << setw(3) << right << "18";
+        cout << setw(4) << right << "19";
+        cout << setw(4) << right << "20";
+        cout << setw(4) << right << "21";
+        cout << setw(4) << right << "22";
+        cout << setw(4) << right << "23";
+        cout << setw(4) << right << "24" << endl;
+
+        cout << setw(3) << right << "25";
+        cout << setw(4) << right << "26";
+        cout << setw(4) << right << "27";
+        cout << setw(4) << right << "28" << endl;
+        break;
+
+    case 5:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(23) << right << "1";
+        cout << setw(4) << right << "2" << endl;
+
+        cout << setw(3) << right << "3";
+        cout << setw(4) << right << "4";
+        cout << setw(4) << right << "5";
+        cout << setw(4) << right << "6";
+        cout << setw(4) << right << "7";
+        cout << setw(4) << right << "8";
+        cout << setw(4) << right << "9" << endl;
+
+        cout << setw(3) << right << "10";
+        cout << setw(4) << right << "11";
+        cout << setw(4) << right << "12";
+        cout << setw(4) << right << "13";
+        cout << setw(4) << right << "14";
+        cout << setw(4) << right << "15";
+        cout << setw(4) << right << "16" << endl;
+
+        cout << setw(3) << right << "17";
+        cout << setw(4) << right << "18";
+        cout << setw(4) << right << "19";
+        cout << setw(4) << right << "20";
+        cout << setw(4) << right << "21";
+        cout << setw(4) << right << "22";
+        cout << setw(4) << right << "23" << endl;
+
+        cout << setw(3) << right << "24";
+        cout << setw(4) << right << "25";
+        cout << setw(4) << right << "26";
+        cout << setw(4) << right << "27";
+        cout << setw(4) << right << "28" << endl;
+        break;
+
+    case 6:
+        cout << "dim lun mar mer jeu ven sam" << endl;
+
+        cout << setw(27) << right << "1" << endl;
+
+        cout << setw(3) << right << "2";
+        cout << setw(4) << right << "3";
+        cout << setw(4) << right << "4";
+        cout << setw(4) << right << "5";
+        cout << setw(4) << right << "6";
+        cout << setw(4) << right << "7";
+        cout << setw(4) << right << "8" << endl;
+
+        cout << setw(3) << right << "9";
+        cout << setw(4) << right << "10";
+        cout << setw(4) << right << "11";
+        cout << setw(4) << right << "12";
+        cout << setw(4) << right << "13";
+        cout << setw(4) << right << "14";
+        cout << setw(4) << right << "15" << endl;
+
+        cout << setw(3) << right << "16";
+        cout << setw(4) << right << "17";
+        cout << setw(4) << right << "18";
+        cout << setw(4) << right << "19";
+        cout << setw(4) << right << "20";
+        cout << setw(4) << right << "21";
+        cout << setw(4) << right << "22" << endl;
+
+        cout << setw(3) << right << "23";
+        cout << setw(4) << right << "24";
+        cout << setw(4) << right << "25";
+        cout << setw(4) << right << "26";
+        cout << setw(4) << right << "27";
+        cout << setw(4) << right << "28" << endl;
+        break;
+
+    }
+
+        cout << "----------------------------" << endl;
+
+    }
+
+    }
+} 
+
+
 
 
 
