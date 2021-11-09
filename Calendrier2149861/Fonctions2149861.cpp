@@ -241,244 +241,181 @@ void afficherCalendrierMensuel(int month, int year)
        
         case 0: 
             
-            cout << " dim lun mar mer jeu ven sam" << endl;
+            cout << " dim lun mar mer jeu ven sam" << endl; // Je output le header du menu
             
-
-            for (int i = 1; compterJ < 32; i++)
+            for (int i = 1; compterJ < 31; i++) // ceci est ma premiere loop for qui me sert a changer de semaine
+                                                // ou en d'autre mots, sauter des lignes
             {
-                cout <<setw(3) << right;
+                cout << setw(3) << right; // Ceci est la commande qui me sert a alligner la premiere date de chaque semaine
 
-                for (int j = 0; j < 7 ; j++)
+                for (int j = 0; j < 7; j++) // Cette loop me sert a output les nombres, fait que sa ouput 7 nombres
+                                            // et ensuite sa sort du loop
                 {
-                    cout << setw(4) << right;
-                    
-                    if (compterJ == 32)
-                        break;
-                    
-                    if (compterJ <= 9) 
-                        cout << compterJ;
-                       
+                    cout << setw(4) << right; // Commande qui alligne bien les dates
 
-                    else if (compterJ >= 10)
-                        cout << compterJ;
-                        
-                    compterJ++; 
-                    
+                    cout << compterJ; // Commande principal qui output chaque date
+                     
+                    if (compterJ == 31) // Commande pour arreter au fin du mois, qui veut dire que la loop arrete
+                                        // une fois qu'on arrive a 31 jours
+                    {
+                        break; // Commande pour arreter le programme
+                    }
+                   
+                    compterJ++; // Ajouter 1 a la variable qui compte les jours
+
                 }
-               
-                cout << endl; 
                 
+                cout << endl; // Commande qui saute de ligne apres chaque semain ou chaque 7 jours
             }
-
-            
-            /* cout << "dim lun mar mer jeu ven sam" << endl;
-
-            cout << setw(3) << right << "1";
-            cout << setw(4) << right << "2";
-            cout << setw(4) << right << "3";
-            cout << setw(4) << right << "4";
-            cout << setw(4) << right << "5";
-            cout << setw(4) << right << "6";
-            cout << setw(4) << right << "7" << endl;
-
-            cout << setw(3) << right << "8";
-            cout << setw(4) << right << "9";
-            cout << setw(4) << right << "10";
-            cout << setw(4) << right << "11";
-            cout << setw(4) << right << "12";
-            cout << setw(4) << right << "13";
-            cout << setw(4) << right << "14" << endl;
-
-            cout << setw(3) << right << "15";
-            cout << setw(4) << right << "16";
-            cout << setw(4) << right << "17";
-            cout << setw(4) << right << "18";
-            cout << setw(4) << right << "19";
-            cout << setw(4) << right << "20";
-            cout << setw(4) << right << "21" << endl;
-
-            cout << setw(3) << right << "22";
-            cout << setw(4) << right << "23";
-            cout << setw(4) << right << "24";
-            cout << setw(4) << right << "25";
-            cout << setw(4) << right << "26";
-            cout << setw(4) << right << "27";
-            cout << setw(4) << right << "28" << endl;
-
-            cout << setw(3) << right << "29";
-            cout << setw(4) << right << "30";
-            cout << setw(4) << right << "31" << endl; */
-
             break;
         
         case 1:
 
-            cout << " dim lun mar mer jeu ven sam" << endl;
+            cout << " dim lun mar mer jeu ven sam" << endl; // Ouput le menu
 
-            //cout << setw(7) << right;
+            for (int PremiereSemaine = 1; PremiereSemaine < 7; PremiereSemaine++) // Loop qui me sert a output la premiere semain puisque c'est different des autres
+                                                                                  // Puisque les mois qui commencent lundi on que 6 jours et on commencent a 1, la loop va aller jusqua 7
+            {
+                if (PremiereSemaine == 1) // Si c'est la premiere journee du mois
+                {
+                    cout << setw(8) << right; // On alligne la date au bon endroit(Lundi)
+                }
+                else // Si ce n'est pas le premier du mois
+                {
+                    cout << setw(4) << right; // On l'alligne comme les autres
+                }
+               
+                cout << PremiereSemaine; // On output la date
+            }
 
+           
+            cout << endl; // On saute de ligne apres la premiere semaine
 
-            for (int i = 1; compterJ < 32; i++)
+            
+            compterJ = 7; // On commence la date a partir du 7 parce qu'on deja output les dates avant
+
+            for (int i = 1; compterJ < 31; i++)
             {
                
                 cout << setw(3) << right;
 
                 for (int j = 0; j < 7; j++)
                 {
-                    if (compterJ == 1)
-                        cout << setw(8) << right;
-                    else
+
                     cout << setw(4) << right;
 
-                    //if (compterJ == 7)
-                        //cout << endl;
+                    cout << compterJ;
 
-                    if (compterJ == 32)
+                    if (compterJ == 31)
+                    {
                         break;
-
-                    if (compterJ <= 9)
-                    { 
-                        cout << compterJ;
-                        if (compterJ == 6)
-                        cout << endl;
                     }
-                        
-
-
-                    else if (compterJ >= 10)
-                        cout << compterJ;
 
                     compterJ++;
-
                 }
-
-                if (compterJ == 8)
-                    cout << "";
-                else
+                
                 cout << endl;
-                //cout << setw(3) << right;
-
 
             }
-           /* cout << "dim lun mar mer jeu ven sam" << endl;
-
-            cout << setw(7) << right << "1";
-            cout << setw(4) << right << "2";
-            cout << setw(4) << right << "3";
-            cout << setw(4) << right << "4";
-            cout << setw(4) << right << "5";
-            cout << setw(4) << right << "6" << endl;
-
-            cout << setw(4) << right << "7";
-            cout << setw(3) << right << "8";
-            cout << setw(4) << right << "9";
-            cout << setw(4) << right << "10";
-            cout << setw(4) << right << "11";
-            cout << setw(4) << right << "12";
-            cout << setw(4) << right << "13" << endl;
-
-            cout << setw(4) << right << "14";
-            cout << setw(3) << right << "15";
-            cout << setw(4) << right << "16";
-            cout << setw(4) << right << "17";
-            cout << setw(4) << right << "18";
-            cout << setw(4) << right << "19";
-            cout << setw(4) << right << "20" << endl;
-
-            cout << setw(4) << right << "21";
-            cout << setw(3) << right << "22";
-            cout << setw(4) << right << "23";
-            cout << setw(4) << right << "24";
-            cout << setw(4) << right << "25";
-            cout << setw(4) << right << "26";
-            cout << setw(4) << right << "27" << endl;
-
-            cout << setw(4) << right << "28";
-            cout << setw(3) << right << "29";
-            cout << setw(4) << right << "30";
-            cout << setw(4) << right << "31" << endl;
-            */
+           
             break;
 
         case 2:
-            cout << "dim lun mar mer jeu ven sam" << endl;
 
-            cout << setw(11) << right << "1";
-            cout << setw(4) << right << "2";
-            cout << setw(4) << right << "3";
-            cout << setw(4) << right << "4";
-            cout << setw(4) << right << "5" << endl;
-            
-            cout << setw(3) << right << "6";
-            cout << setw(4) << right << "7";
-            cout << setw(4) << right << "8";
-            cout << setw(4) << right << "9";
-            cout << setw(4) << right << "10";
-            cout << setw(4) << right << "11";
-            cout << setw(4) << right << "12" << endl;
-            
-            cout << setw(3) << right << "13";
-            cout << setw(4) << right << "14";
-            cout << setw(4) << right << "15";
-            cout << setw(4) << right << "16";
-            cout << setw(4) << right << "17";
-            cout << setw(4) << right << "18";
-            cout << setw(4) << right << "19" << endl;
-            
-            cout << setw(3) << right << "20";
-            cout << setw(4) << right << "21";
-            cout << setw(4) << right << "22";
-            cout << setw(4) << right << "23";
-            cout << setw(4) << right << "24";
-            cout << setw(4) << right << "25";
-            cout << setw(4) << right << "26" << endl;
-            
-            cout << setw(3) << right << "27";
-            cout << setw(4) << right << "28";
-            cout << setw(4) << right << "29";
-            cout << setw(4) << right << "30";
-            cout << setw(4) << right << "31" << endl;
+            cout << " dim lun mar mer jeu ven sam" << endl;
 
+            for (int PremiereSemaine = 1; PremiereSemaine < 6; PremiereSemaine++)
+            {
+                if (PremiereSemaine == 1)
+                {
+                    cout << setw(12) << right;
+                }
+                else
+                {
+                    cout << setw(4) << right;
+                }
+
+                cout << PremiereSemaine;
+            }
+
+            cout << endl;
+
+            compterJ = 6;
+
+            for (int i = 1; compterJ < 31; i++)
+            {
+
+                cout << setw(3) << right;
+
+                for (int j = 0; j < 7; j++)
+                {
+
+                    cout << setw(4) << right;
+
+                    cout << compterJ;
+
+                    if (compterJ == 31)
+                    {
+                        break;
+                    }
+
+                    compterJ++;
+                }
+
+                cout << endl;
+
+            }
+            
             break;
 
         case 3:
-            cout << "dim lun mar mer jeu ven sam" << endl;
+            cout << " dim lun mar mer jeu ven sam" << endl; // Ouput le menu
 
-            cout << setw(15) << right << "1";
-            cout << setw(4) << right << "2";
-            cout << setw(4) << right << "3";
-            cout << setw(4) << right << "4" << endl;
-            
-            cout << setw(3) << right << "5";
-            cout << setw(4) << right << "6";
-            cout << setw(4) << right << "7";
-            cout << setw(4) << right << "8";
-            cout << setw(4) << right << "9";
-            cout << setw(4) << right << "10";
-            cout << setw(4) << right << "11" << endl;
-            
-            cout << setw(3) << right << "12";
-            cout << setw(4) << right << "13";
-            cout << setw(4) << right << "14";
-            cout << setw(4) << right << "15";
-            cout << setw(4) << right << "16";
-            cout << setw(4) << right << "17";
-            cout << setw(4) << right << "18" << endl;
-           
-            cout << setw(3) << right << "19";
-            cout << setw(4) << right << "20";
-            cout << setw(4) << right << "21";
-            cout << setw(4) << right << "22";
-            cout << setw(4) << right << "23";
-            cout << setw(4) << right << "24";
-            cout << setw(4) << right << "25" << endl;
-           
-            cout << setw(3) << right << "26";
-            cout << setw(4) << right << "27";
-            cout << setw(4) << right << "28";
-            cout << setw(4) << right << "29";
-            cout << setw(4) << right << "30";
-            cout << setw(4) << right << "31" << endl;
+            for (int PremiereSemaine = 1; PremiereSemaine < 5; PremiereSemaine++) // Loop qui me sert a output la premiere semain puisque c'est different des autres
+                                                                                  // Puisque les mois qui commencent lundi on que 6 jours et on commencent a 1, la loop va aller jusqua 7
+            {
+                if (PremiereSemaine == 1) // Si c'est la premiere journee du mois
+                {
+                    cout << setw(16) << right; // On alligne la date au bon endroit(Lundi)
+                }
+                else // Si ce n'est pas le premier du mois
+                {
+                    cout << setw(4) << right; // On l'alligne comme les autres
+                }
+
+                cout << PremiereSemaine; // On output la date
+            }
+
+
+            cout << endl; // On saute de ligne apres la premiere semaine
+
+
+            compterJ = 5; // On commence la date a partir du 5 parce qu'on deja output les dates avant
+
+            for (int i = 1; compterJ < 31; i++)
+            {
+
+                cout << setw(3) << right;
+
+                for (int j = 0; j < 7; j++)
+                {
+
+                    cout << setw(4) << right;
+
+                    cout << compterJ;
+
+                    if (compterJ == 31)
+                    {
+                        break;
+                    }
+
+                    compterJ++;
+                }
+
+                cout << endl;
+
+            }
+
 
             break;
 
